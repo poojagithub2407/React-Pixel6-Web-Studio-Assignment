@@ -49,9 +49,9 @@ GET https://dummyjson.com/users?limit=30&skip=0
    `https://github.com/poojagithub2407/React-Pixel6-Web-Studio-Assignment.git`
 
 2. **Navigate into the project directory:**
-   `cd your-repo-name`
+   ```cd your-repo-name```
 
-## How to Clone and Run
+## How to Run
 
 1. **Install dependencies:**
      `npm install`
