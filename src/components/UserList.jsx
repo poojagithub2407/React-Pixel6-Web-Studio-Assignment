@@ -6,9 +6,9 @@ import FilterUser from "./FilterUser";
 const UserList = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [limit] = useState(30);
-  const { loading, error, user, hasMore } = useUsers(limit, pageNumber);
+  const { loading, user, hasMore } = useUsers(limit, pageNumber);
   const [users, setUsers] = useState([]);
-  const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'asc' });
+  const [sorting, setSorting] = useState({ key: 'id', direction: 'asc' });
 
   // Filter states
   const [genderFilter, setGenderFilter] = useState('');
@@ -33,13 +33,14 @@ const UserList = () => {
 
   useEffect(() => {
     let filteredUsers = [...user];
-    
+
     if (genderFilter) {
       filteredUsers = filteredUsers.filter(user => user.gender === genderFilter);
     }
-    
+
     if (stateFilter) {
-      filteredUsers = filteredUsers.filter(user => user.address.state.toLowerCase().includes(stateFilter.toLowerCase()));
+      filteredUsers = filteredUsers.filter(user => user.address.state
+        .toLowerCase().includes(stateFilter.toLowerCase()));
     }
 
     setUsers(filteredUsers);
@@ -47,34 +48,34 @@ const UserList = () => {
 
   const handleSort = (key) => {
     let direction = 'asc';
-    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+    if (sorting.key === key && sorting.direction === 'asc') {
       direction = 'desc';
     }
-    setSortConfig({ key, direction });
+    setSorting({ key, direction });
   };
 
   const sortedUsers = [...users].sort((a, b) => {
-    if (a[sortConfig.key] < b[sortConfig.key]) {
-      return sortConfig.direction === 'asc' ? -1 : 1;
+    if (a[sorting.key] < b[sorting.key]) {
+      return sorting.direction === 'asc' ? -1 : 1;
     }
-    if (a[sortConfig.key] > b[sortConfig.key]) {
-      return sortConfig.direction === 'asc' ? 1 : -1;
+    if (a[sorting.key] > b[sorting.key]) {
+      return sorting.direction === 'asc' ? 1 : -1;
     }
     return 0;
   });
 
   const handleApplyFilters = () => {
-    setPageNumber(1); // Reset to the first page for new filters
+    setPageNumber(1);
   };
 
   const handleResetFilters = () => {
     setGenderFilter('');
     setStateFilter('');
-    setPageNumber(1); // Reset to the first page
+
   };
 
   return (
-    <div className="main-container card">
+    <div className="main-container mb-5 ">
       <FilterUser
         genderFilter={genderFilter}
         setGenderFilter={setGenderFilter}
@@ -83,12 +84,15 @@ const UserList = () => {
         onApplyFilters={handleApplyFilters}
         onResetFilters={handleResetFilters}
       />
-      <UserTable
-        users={sortedUsers}
-        lastUserElementRef={lastUserElementRef}
-        sortConfig={sortConfig}
-        handleSort={handleSort}
-      />
+      <div className="table-container">
+        <UserTable
+          users={sortedUsers}
+          lastUserElementRef={lastUserElementRef}
+          sort={sorting}
+          handleSort={handleSort}
+        />
+      </div>
+
     </div>
   );
 };

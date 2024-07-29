@@ -1,4 +1,12 @@
+
+
 .main-container{
   margin:  100px 50px;
   
+}
+
+.table-container{
+  border: 2px solid rgb(227, 222, 222);
+  border-radius: 6px;
+  margin-top: 20px;
 }
