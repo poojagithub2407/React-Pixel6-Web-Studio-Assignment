@@ -1,8 +1,29 @@
-# React + Vite
+## Pixcel6 Assignmemt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introdution
 
-Currently, two official plugins are available:
+This assignment involves creating a single-page application that interacts with a user list API using React
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technology Stack
+
+- **React**
+
+## Functionalities
+
+following functionalities are use:
+
+1. **Fetch Users:**
+
+- Fetch user data from the provided API and display the user list with detailed information
+
+2. **Pagination with Infinite Scoll:**
+   -Implement pagination with infinite scrolling.
+   -Display 10 records per page.
+
+   3. **Sorting Functionality:**
+    -Add sorting functionality for sortable columns such as ID, Name, and Age.
+
+    4.**Filtering Functionality:**
+    -Implement filtering on fields such as Gender and Country.
+
+

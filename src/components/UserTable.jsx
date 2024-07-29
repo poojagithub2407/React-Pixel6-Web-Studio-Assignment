@@ -1,6 +1,9 @@
 import { GoArrowUp, GoArrowDown } from "react-icons/go";
 
-const UserTable = ({ users, lastUserElementRef, handleSort, sort }) => {
+const UserTable = ({ users,
+  lastUserElementRef,
+  handleSort,
+  sort }) => {
   return (
     <table className='table'>
       <thead>
